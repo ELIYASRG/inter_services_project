@@ -32,8 +32,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('visitor.authentication.login')}}">Connexion</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('visitor.registration.register')}}">Inscription</a>
+                        <li class="nav-item dropstart">
+                            
+                            {# <div class="dropdown"> #}
+                                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Inscription
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" type="button">
+                                            <a class="nav-link" href="{{ path('visitor.registration.register')}}">Client</a>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" type="button">
+                                            <a class="nav-link" href="{{ path('visitor.registration.associate.register')}}">Associer</a>
+                                        </button>
+                                    </li>
+                                </ul>
+                            {# </div> #}
                         </li>
                     {% endif %}
                 </ul>

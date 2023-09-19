@@ -23,6 +23,11 @@
         {% block webpack_js %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        <script>
+            $(document).ready(function () {
+            });
+        </script>
     </head>
     <body class="bg-light body-visitor">
         
@@ -35,5 +40,6 @@
 
         {# Pieds de page #}
         {% include "layouts/footer/_footer_visitor.html.twig" %}
+
     </body>
 </html>
