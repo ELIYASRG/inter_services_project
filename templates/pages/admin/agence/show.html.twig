@@ -1,0 +1,51 @@
+{% extends "themes/base_admin.html.twig" %}
+
+{% block title %} - agence {{ agence.id }}{% endblock %}
+
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Agence n°{{ agence.id }}</h1>
+
+    <div class="d-flex justify-content-end align-content-center my-3">
+        <a href="{{ path('admin.agence.index' )}}" class="btn btn-primary">Retour à la liste</a>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agence.id }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ agence.ville }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ agence.nom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ agence.tel }}</td>
+            </tr>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ agence.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Tarif</th>
+                <td>{{ agence.tarif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end align-content-center my-3">
+        <a href="{{ path('admin.agence.edit', {'id': agence.id}) }}" class="btn btn-primary mx-3">Modifier</a>
+        <a href="#" title="Supprimer" onclick="event.preventDefault(); confirm('Confirmer la suppression ?') && document.querySelector('.delete_agence_{{ agence.id }}').submit()"class="btn btn-danger">Supprimer</a>
+    <form class="delete_agence_{{ agence.id }}" method="POST" action="{{ path('admin.agence.delete', {'id': agence.id})}}" class="d-none">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ agence.id ) }}">
+    </form>
+    </div>
+
+{% endblock %}

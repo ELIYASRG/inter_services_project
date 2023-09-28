@@ -1,0 +1,15 @@
+{% extends "themes/base_admin.html.twig" %}
+
+{% block title %} - Nouvelle agence{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Nouvelle Agence</h1>
+
+
+    <div class="d-flex justify-content-end align-content-center my-3">
+        <a href="{{ path('admin.agence.index' )}}" class="btn btn-primary">Retour à la liste</a>
+    </div>
+    {{ include('pages/admin/agence/_form.html.twig') }}
+
+
+{% endblock %}

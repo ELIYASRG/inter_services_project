@@ -4,4 +4,134 @@
 
 {% block main %}
     <h1 class="text-center my-3 display-5">Espace d'administration</h1>
+
+     <div class="d-flex justify-content-end align-content-center my-3">
+        {# <a href="{{ path('' )}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Nouve</a> #}
+    </div>
+    <div class="container mt-5">
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-4 bg-danger">
+                <h2 class="text-center my-3">Expéditeur</h2>
+                <div class="my-3">
+                    <label>Départ</label>
+                    <div class="text-danger">{{ form_errors(form.depart) }}</div>
+                    {{ form_widget(form.depart, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Nom</label>
+                    <div class="text-danger">{{ form_errors(form.nom_e) }}</div>
+                    {{ form_widget(form.nom_e, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Prénom</label>
+                    <div class="text-danger">{{ form_errors(form.prenom_e) }}</div>
+                    {{ form_widget(form.prenom_e, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Tel</label>
+                    <div class="text-danger">{{ form_errors(form.tel_e) }}</div>
+                    {{ form_widget(form.tel_e, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Type de pièce d'identité</label>
+                    <div class="text-danger">{{ form_errors(form.identite) }}</div>
+                    {{ form_widget(form.identite, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>N° d'identité</label>
+                    <div class="text-danger">{{ form_errors(form.id_e) }}</div>
+                    {{ form_widget(form.id_e, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Pièce jointe</label>
+                    <div class="text-danger">{{ form_errors(form.image_id) }}</div>
+                    {{ form_widget(form.image_id, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="col-4 bg-success">
+                <h2 class="text-center my-3">Destinataire</h2>
+                <div class="my-3">
+                    <label>Nom</label>
+                    <div class="text-danger">{{ form_errors(form.nom_d) }}</div>
+                    {{ form_widget(form.nom_d, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                {# <div class="mb-3">
+                    <label>Départ</label>
+                    <div class="text-danger">{{ form_errors(form.depart) }}</div>
+                    {{ form_widget(form.depart, {'attr': {'class': 'form-control'}}) }}
+                </div> #}
+
+                <div class="mb-3">
+                    <label>Prénom</label>
+                    <div class="text-danger">{{ form_errors(form.prenom_d) }}</div>
+                    {{ form_widget(form.prenom_d, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Tel</label>
+                    <div class="text-danger">{{ form_errors(form.tel_d) }}</div>
+                    {{ form_widget(form.tel_d, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+
+                <div class="mb-3">
+                    <label>N° d'identité</label>
+                    <div class="text-danger">{{ form_errors(form.id_d) }}</div>
+                    {{ form_widget(form.id_d, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+            </div>
+
+            <div class="col-4 bg-warning">
+                <h2 class="text-center my-3">Colis</h2>
+                <div class="my-3">
+                    <label>Nombre de colis</label>
+                    <div class="text-danger">{{ form_errors(form.n_colis) }}</div>
+                    {{ form_widget(form.n_colis, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Payé ?</label>
+                    <div class="text-danger">{{ form_errors(form.paye) }}</div>
+                    {{ form_widget(form.paye, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Mode de paiemant</label>
+                    <div class="text-danger">{{ form_errors(form.mode_paiement) }}</div>
+                    {{ form_widget(form.mode_paiement, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label>Poids total</label>
+                    <div class="text-danger">{{ form_errors(form.poids_t) }}</div>
+                    {{ form_widget(form.poids_t, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+
+                <div class="mb-3">
+                    <label>Type de colis</label>
+                    <div class="text-danger">{{ form_errors(form.type) }}</div>
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control', 'rows': 10}}) }}
+                </div>
+
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end align-content-center mb-3">
+            <input type="submit" class="btn btn-primary" value="sauvegarder" formnovalidate/>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

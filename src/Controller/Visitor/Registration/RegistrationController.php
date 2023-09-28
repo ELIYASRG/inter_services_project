@@ -112,7 +112,7 @@ class RegistrationController extends AbstractController
 
             // send an email to user
             $sendEmailService->send([
-                "sender_email" => "interservicesvlg@gmail.com",
+                "sender_email" => "inter-services@gmail.com",
                 "sender_name" => "Ahmed IS",
                 "recipient_email" => $associerUser->getEmail(),
                 "subject" => "Vérification de votre compte sur le site InterServices VLG",
@@ -175,43 +175,4 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('visitor.authentication.login');
     }
 
-    // #[Route('/register/email-verif/{id<\d+>}/{token}', name: 'visitor.registration.email_verif')]
-    // public function emailVerif(Client $clientUser, ClientRepository $clientRepository, string $token, Associer $associerUser, AssocierRepository $associerRepository) : Response
-    // {
-    //     if ( ! $clientUser || ! $associerUser)
-    //     {
-    //         throw new AccessDeniedException();
-    //     }
-        
-    //     if ( $clientUser->isIsVerified() || $associerUser->isIsVerified())
-    //     {
-    //         $this->addFlash('success', 'Votre compte a déjà été vérifié! Veuillez vous connecter.');
-    //         $this->redirectToRoute('visitor.authentication.login');
-    //     }
-        
-    //     if ( empty($token) || empty($clientUser->getTokenForEmailVerification()) || ($token !== $clientUser->getTokenForEmailVerification()) || empty($associerUser->getTokenForEmailVerification()) || ($token !== $associerUser->getTokenForEmailVerification()))
-    //     {
-    //         throw new AccessDeniedException();
-    //     }
-        
-    //     if ( new \DateTimeImmutable('now') > $clientUser->getExpiresAt() )
-    //     {
-    //         $deadline = $clientUser->getExpiresAt();
-    //         $clientRepository->remove($clientUser, true);
-
-    //         throw new CustomUserMessageAccountStatusException("Votre délai de vérification de compte est dépassé depuis le : $deadline. Veuillez vous réinscrire.");
-    //     }
-
-    //     $clientUser->setIsVerified(true);
-    //     $clientUser->setVerifiedAt(new \DateTimeImmutable('now'));
-
-    //     $clientUser->setTokenForEmailVerification(null);
-    //     $clientUser->setExpiresAt(null);
-
-    //     $clientRepository->save($clientUser, true);
-
-    //     $this->addFlash('success', 'Votre compte a bien été vérifié! Vous pouvez vous connecter.');
-
-    //     return $this->redirectToRoute('visitor.authentication.login');
-    // }
 }

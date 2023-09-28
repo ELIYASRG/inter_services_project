@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping\InheritanceType;
 use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -76,6 +78,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $tokenForEmailVerification = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Envoi::class)]
+    private Collection $envois;
+
     #[Gedmo\Timestampable(on: 'create')]
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $createdAt = null;
@@ -94,6 +99,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->isVerified = false;
         $this->roles[] = 'ROLE_USER';
+        $this->envois = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,6 +241,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Envoi>
+     */
+    public function getEnvois(): Collection
+    {
+        return $this->envois;
+    }
+
+    public function addEnvoi(Envoi $envoi): self
+    {
+        if (!$this->envois->contains($envoi)) {
+            $this->envois->add($envoi);
+            $envoi->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnvoi(Envoi $envoi): self
+    {
+        if ($this->envois->removeElement($envoi)) {
+            // set the owning side to null (unless already changed)
+            if ($envoi->getUser() === $this) {
+                $envoi->setUser(null);
+            }
+        }
 
         return $this;
     }

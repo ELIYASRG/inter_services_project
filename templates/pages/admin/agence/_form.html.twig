@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+    <div class="container mt-5">
+        {{ form_start(form) }}
+
+            <div class="mb-3">
+                <label>Ville</label>
+                <div class="text-danger">{{ form_errors(form.ville) }}</div>
+                {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                <label>Nom</label>
+                <div class="text-danger">{{ form_errors(form.nom) }}</div>
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                <label>Tel</label>
+                <div class="text-danger">{{ form_errors(form.tel) }}</div>
+                {{ form_widget(form.tel, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                <label>Adresse</label>
+                <div class="text-danger">{{ form_errors(form.adresse) }}</div>
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                <label>Tarif</label>
+                <div class="text-danger">{{ form_errors(form.tarif) }}</div>
+                {{ form_widget(form.tarif, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary" formnovalidate/>
+            </div>
+        {{ form_end(form) }}
+    </div>
+
+{{ form_end(form) }}
